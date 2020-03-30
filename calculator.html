@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Calculator</title>
+    <link rel='stylesheet' href="calculator.css">
+    <script src='calculator.js'></script>
+    </head>
+<body>
+        <div id='allView'>
+                <div id='screen'></div>
+              <div id='buttons'>
+                <div>
+                    <button id='1/x'onclick="reverseNumber()">1/x</button>
+                    <button id='%'onclick="percent()">%</button>
+                    <button id='x^1/2'onclick="squareRoot()">x^1/2</button>
+                    <button id='x^2' onclick="square()">x^2</button>
+                </div>
+                
+                <div>
+                    <button id='7' onclick="f(event)">7</button>
+                    <button id='8' onclick="f(event)">8</button>
+                    <button id='9' onclick="f(event)">9</button>
+                    <button id='*' onclick="f(event)">*</button>
+                    
+                </div>
+                <div>
+                    <button id='4' onclick="f(event)">4</button>
+                    <button id='5' onclick="f(event)">5</button>
+                    <button id='6' onclick="f(event)">6</button>
+                    <button id='-' onclick="f(event)">-</button>
+                    
+                </div>
+                <div>
+                    <button id='1' onclick="f(event)">1</button>
+                    <button id='2' onclick="f(event)">2</button>
+                    <button id='3' onclick="f(event)">3</button>
+                    <button id='+' onclick="f(event)">+</button>
+                    
+                </div>
+                <div>
+                    <button id='C' onclick='f1()'>C</button>
+                    <button id='0' onclick="f(event)">0</button>
+                    <button id='/' onclick="f(event)">/</button>
+                    <button id='=' onclick="final()">=</button>
+                    
+                </div>
+              </div>
+              </div>
+</body>
+</html>

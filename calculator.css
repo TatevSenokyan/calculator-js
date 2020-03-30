@@ -1,0 +1,35 @@
+#screen {
+    width:215px; 
+    height:80px;
+    color:honeydew;
+    text-align: center;
+    font-size: 25px;
+    border-top-right-radius: 12px;
+    border-top-left-radius: 12px;
+   
+    
+    
+  }
+  #buttons button {
+    width:50px;
+    height:37px;
+    background-color: rgb(44, 42, 42);
+    color:honeydew;
+    border-radius: 5px;
+    outline: none;
+    border:1px solid grey;
+    
+   
+  }
+  #allView {
+    width:215px;
+    height:290px;
+    background-color:rgb(44, 42, 42);;
+    border-radius: 13px;
+
+  }
+  #buttons{
+   margin-top:15px;
+   
+  }
+  
