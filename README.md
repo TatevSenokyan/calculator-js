@@ -1,2 +1,2 @@
 # calculator-js
-calculator javascript
+calculator code writing  javascript language
