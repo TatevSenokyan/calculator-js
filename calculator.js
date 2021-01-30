@@ -6,14 +6,46 @@ let finalResult=0;
       let a=event.target.innerHTML;
          output+=a;
          document.getElementById('screen').innerHTML=output;  
-           for (let i=0; i<output.length; i++) {
-              if (output[i]=='+' || output[i]=='-' || output[i]=='*' || output[i]=='/') {
-                if (output[i-1]=='+' || output[i-1]=='-' || output[i-1]=='*' || output[i-1]=='/') {
-                    output=output.slice(0,i)+output.slice(i+1)
-                    document.getElementById('screen').innerHTML=output;  
-                  }
-                }
-              }   
+         for (let i=0; i<output.length; i++) {
+            if(output[i]=='-' &&  output[i+1]=='-') {
+              output=output.slice(0,i)+'+'+output.slice(i+2)
+              document.getElementById('screen').innerHTML=output;
+               
+            }
+            if(output[i]=='+' &&  output[i+1]=='+') {
+              output=output.slice(0,i)+output.slice(i+1)
+              document.getElementById('screen').innerHTML=output;
+               
+            }
+            if(output[i]=='-' &&  output[i+1]=='+' || output[i]=='+' &&  output[i+1]=='-') {
+              output=output.slice(0,i)+'-'+output.slice(i+2)
+              document.getElementById('screen').innerHTML=output;
+               
+            }
+            if(output[i]=='+' &&  output[i+1]=='*' || output[i]=='+' &&  output[i+1]=='/') {
+              output=output.slice(0,i+1)+output.slice(i+2)
+              document.getElementById('screen').innerHTML=output;
+               
+            }
+            if(output[i]=='-' &&  output[i+1]=='*' || output[i]=='-' &&  output[i+1]=='/') {
+              output=output.slice(0,i+1)+output.slice(i+2)
+              document.getElementById('screen').innerHTML=output;
+               
+            }
+            if(output[i]=='*' &&  output[i+1]=='*' || output[i]=='*' &&  output[i+1]=='/' ||
+            output[i]=='*' &&  output[i+1]=='+' || output[i]=='*' &&  output[i+1]=='-') {
+              output=output.slice(0,i+1)+output.slice(i+2)
+              document.getElementById('screen').innerHTML=output;
+               
+            }
+            if(output[i]=='/' &&  output[i+1]=='*' || output[i]=='/' &&  output[i+1]=='/' ||
+            output[i]=='/' &&  output[i+1]=='+' || output[i]=='/' &&  output[i+1]=='-') {
+              output=output.slice(0,i+1)+output.slice(i+2)
+              document.getElementById('screen').innerHTML=output;
+               
+            }
+         }
+        
     }
          
 
@@ -26,38 +58,34 @@ let finalResult=0;
         
         
   function  final() {
-         
-            
-        for (let i=0; i<output.length; i++) {
-            if(output[i]=='+' || output[i]=='-' || output[i]=='/' || output[i]=='*') {
-                arr.push(i)
-         }
- 
-        }
-
-         let result=[output.slice(0,arr[0]),output[arr[0]]]
- 
-            for (let i=1; i<arr.length; i++) {
-               item=output.slice(arr[i-1]+1,arr[i]);
-                  result.push(item,output[arr[i]])
+         console.log(output)
+            arr=output.split('');
+            let arr1;
+            function f(arr) {
+              if(!arr.includes('*') && !arr.includes('/') ) {
+             return arr1=arr
+              }
+            if(arr.includes('*')) {
+            arr.splice(arr.indexOf('*')-1,3,`${arr[arr.indexOf('*')-1]*arr[arr.indexOf('*')+1]}`)
             }
-                result.push(output.slice(arr[arr.length-1]+1))
+            if(arr.includes('/')) {
+            arr.splice(arr.indexOf('/')-1,3,`${arr[arr.indexOf('/')-1]/arr[arr.indexOf('/')+1]}`)
+            }
+            return f(arr)
+             
+            }
+            f(arr)
 
-
-
-              finalResult+=+result[0];
-                   for (let i=1; i<result.length;i++) {
-                          if(result[i]=='-') {
-                             finalResult-=+result[i+1]
-                          } else if(result[i]=='+') {
-                               finalResult+=+result[i+1]
-                          } else if(result[i]=='/') {
-                            finalResult/=+result[i+1]
-                            } else if(result[i]=='*') {
-                               finalResult*=+result[i+1]
-                             }
+            finalResult=Number(arr1[0]);
+                for (let i=1; i<arr1.length;i++) {
+                          if(arr1[i]=='-') {
+                            finalResult-=+arr1[i+1]
+                          } else if(arr1[i]=='+') {
+                            finalResult+=+arr1[i+1]
+                          } 
                     }
 
+        
 
                       document.getElementById('screen').innerHTML=finalResult 
                       output=finalResult;
@@ -74,7 +102,7 @@ let finalResult=0;
           
            }
         finalResult=finalResult*finalResult;
-        document.getElementById('screen').innerHTML=finalResult;
+        document.getElementById('screen').innerHTML=finalResult.toFixed(3);
         output=finalResult
         finalResult=0;
         arr=[]
@@ -87,7 +115,7 @@ let finalResult=0;
           
            }
           finalResult=Math.pow(finalResult,1/2);
-          document.getElementById('screen').innerHTML=finalResult;
+          document.getElementById('screen').innerHTML=finalResult.toFixed(3);
           output=finalResult
           finalResult=0;
           arr=[]
@@ -99,7 +127,7 @@ let finalResult=0;
           
            }
           finalResult=1/finalResult;
-          document.getElementById('screen').innerHTML=finalResult;
+          document.getElementById('screen').innerHTML=finalResult.toFixed(3);
           output=finalResult
           finalResult=0;
           arr=[]
@@ -111,7 +139,7 @@ let finalResult=0;
           
            }
           finalResult=finalResult/100;
-          document.getElementById('screen').innerHTML=finalResult;
+          document.getElementById('screen').innerHTML=finalResult.toFixed(3);
           output=finalResult
           finalResult=0;
           arr=[]
